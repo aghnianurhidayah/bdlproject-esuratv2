@@ -1,0 +1,321 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 21, 2025 at 04:04 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `esuratv2_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sk_domisili`
+--
+
+CREATE TABLE `sk_domisili` (
+  `skd_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganagaraan` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sk_kelahiran`
+--
+
+CREATE TABLE `sk_kelahiran` (
+  `skl_id` int(11) NOT NULL,
+  `nik` varchar(50) NOT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganagaraan` varchar(50) DEFAULT NULL,
+  `nama_ayah` varchar(50) DEFAULT NULL,
+  `nama_ibu` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sk_kematian`
+--
+
+CREATE TABLE `sk_kematian` (
+  `skm_id` int(11) NOT NULL,
+  `nik` varchar(50) NOT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `tgl_meninggal` date DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sk_tidak_mampu`
+--
+
+CREATE TABLE `sk_tidak_mampu` (
+  `sktm_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganagaraan` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spn_akte_kelahiran`
+--
+
+CREATE TABLE `spn_akte_kelahiran` (
+  `spn_akte_kelahiran_id` int(11) NOT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganegaraan` varchar(50) DEFAULT NULL,
+  `nama_ayah` varchar(50) DEFAULT NULL,
+  `nama_ibu` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spn_status_perwalian`
+--
+
+CREATE TABLE `spn_status_perwalian` (
+  `status_perwalian_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganagaraan` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sp_e_ktp`
+--
+
+CREATE TABLE `sp_e_ktp` (
+  `spektp_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `kewarganagaraan` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sp_nikah`
+--
+
+CREATE TABLE `sp_nikah` (
+  `sp_nikah_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `pekerjaan` varchar(50) DEFAULT NULL,
+  `kewarganegaraan` varchar(50) DEFAULT NULL,
+  `file_kk` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL,
+  `file_foto` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sp_skck`
+--
+
+CREATE TABLE `sp_skck` (
+  `skck_id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `no_kk` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `tgl_lahir` varchar(50) DEFAULT NULL,
+  `jenis_kelamin` varchar(50) DEFAULT NULL,
+  `agama` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `pekerjaan` varchar(50) DEFAULT NULL,
+  `file_ktp` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `surat`
+--
+
+CREATE TABLE `surat` (
+  `id_surat` int(11) NOT NULL,
+  `no_surat` varchar(50) NOT NULL,
+  `tgl_masuk` date NOT NULL,
+  `tgl_keluar` date NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `nik`, `nama`, `password`) VALUES
+(1, '1234567890000001', 'Aghnia', '$2y$10$uffAh9WuK2/2VIVStXyXHOonzodjVGnKJVVI.fuka3Lk3RXc1vfcO');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `sk_domisili`
+--
+ALTER TABLE `sk_domisili`
+  ADD PRIMARY KEY (`skd_id`);
+
+--
+-- Indexes for table `sk_kelahiran`
+--
+ALTER TABLE `sk_kelahiran`
+  ADD PRIMARY KEY (`skl_id`);
+
+--
+-- Indexes for table `sk_kematian`
+--
+ALTER TABLE `sk_kematian`
+  ADD PRIMARY KEY (`skm_id`);
+
+--
+-- Indexes for table `sk_tidak_mampu`
+--
+ALTER TABLE `sk_tidak_mampu`
+  ADD PRIMARY KEY (`sktm_id`);
+
+--
+-- Indexes for table `spn_akte_kelahiran`
+--
+ALTER TABLE `spn_akte_kelahiran`
+  ADD PRIMARY KEY (`spn_akte_kelahiran_id`);
+
+--
+-- Indexes for table `spn_status_perwalian`
+--
+ALTER TABLE `spn_status_perwalian`
+  ADD PRIMARY KEY (`status_perwalian_id`);
+
+--
+-- Indexes for table `sp_e_ktp`
+--
+ALTER TABLE `sp_e_ktp`
+  ADD PRIMARY KEY (`spektp_id`);
+
+--
+-- Indexes for table `sp_nikah`
+--
+ALTER TABLE `sp_nikah`
+  ADD PRIMARY KEY (`sp_nikah_id`);
+
+--
+-- Indexes for table `sp_skck`
+--
+ALTER TABLE `sp_skck`
+  ADD PRIMARY KEY (`skck_id`);
+
+--
+-- Indexes for table `surat`
+--
+ALTER TABLE `surat`
+  ADD PRIMARY KEY (`id_surat`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
