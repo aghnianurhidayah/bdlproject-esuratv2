@@ -31,7 +31,6 @@ body {
   background-color: var(--background-color);
   min-height: 100vh;
   padding: 10px 14px;
-  margin-top: 75px;
   width: 100%;
 }
 
@@ -40,14 +39,18 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: var(--secondary-color);
+  background: var(--primary-color);
   border-radius: 10px;
-  padding: 10px 2rem;
-  margin-bottom: 1rem;
+  padding: 20px 36px;
+  margin: 0px 50px 40px 50px;
 }
 
 .header {
-  color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.header h2 {
+  margin-bottom: 10px;
 }
 
 .search {
@@ -55,7 +58,7 @@ body {
   align-items: center;
   background: var(--background-color);
   color: #ffc801;
-  border-radius: 15px;
+  border-radius: 6px;
   gap: 10px;
   padding: 4px 12px;
 }
@@ -79,25 +82,35 @@ input[type="text"] {
   transform: scale(1.2);
 }
 
+.table {
+  display: flex;
+  justify-content: center;
+}
+
 table {
   width: 100%;
-  border: 2px solid var(--secondary-color);
+  margin: 0px 50px 40px 50px;
+  border: 2px solid rgb(185, 185, 185);
   border-collapse: collapse;
-  text-align: center;
+  text-align: left;
 }
 
 table thead {
-  background-color: var(--primary-color);
+  background-color: rgb(185, 185, 185);
+  color: white;
 }
 
-table th,
-td {
-  padding: 8px;
-  border: 2px solid var(--secondary-color);
-  color: var(--text-color);
+table th {
+  padding: 10px 12px;
+  font-weight: 600;
 }
 
-button{
+table td {
+  padding: 10px 12px;
+  border-bottom: 2px solid rgb(185, 185, 185);
+}
+
+button {
   font-size: 15px;
   background: var(--primary-color);
   color: var(--secondary-color);
@@ -106,10 +119,11 @@ button{
   padding: 12px 24px;
 }
 
-button i{
+button i {
   font-size: 15px;
 }
 
-button:hover, i:hover{
+button:hover,
+i:hover {
   transform: scale(1.1);
 }

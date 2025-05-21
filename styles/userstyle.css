@@ -10,9 +10,23 @@
   --third-color: white;
 }
 
+.dark-mode {
+  --primary-color: #eabe20;
+  --secondary-color: #3a3b3c;
+  --background-color: #242526;
+  --hover-color: #aeaeae;
+  --text-color: white;
+}
+
 .dark-theme {
   --primary-color: #000106;
   --secondary-color: #ee0c0c;
+}
+
+body {
+  min-height: 100%;
+  background: var(--background-color);
+  font-family: "Montserrat", sans-serif;
 }
 
 .hero {
@@ -75,17 +89,22 @@
   border-bottom: 2px solid var(--primary-color);
 }
 
+.form .select-box {
+  display: flex;
+  justify-content: center;
+}
+
 .form .form-box {
   display: flex;
   justify-content: center;
 }
 
-.form-box .input-box {
+.form .input-box{
   display: grid;
   margin-bottom: 24px;
 }
 
-.form-box .input-box label {
+.form .input-box label {
   color: var(--secondary-color);
   font-size: 16px;
   font-weight: 600;
@@ -93,7 +112,7 @@
   margin-left: 5px;
 }
 
-.form-box .input-box input {
+.form .input-box input {
   width: 600px;
   height: 40px;
   border-radius: 13px;
@@ -101,6 +120,7 @@
   padding: 0 12px;
   font-size: 16px;
 }
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -112,12 +132,12 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.form-box .input-box .filefield {
+.form .input-box .filefield {
   padding-top: 12px;
 }
 
-.form-box .input-box select {
-  width: 610px;
+.form .input-box select {
+  width: 625px;
   height: 40px;
   border-radius: 13px;
   border: 1px solid rgba(44, 68, 78, 0.6);
@@ -125,7 +145,7 @@ input[type="number"] {
   font-size: 16px;
 }
 
-.form-box .button {
+.form .button {
   margin-top: 20px;
   text-align: right;
   padding: 10px 30px;
@@ -136,10 +156,6 @@ input[type="number"] {
   border-radius: 10px;
   color: var(--secondary-color);
   cursor: pointer;
-}
-
-.form-box .d-none {
-  display: none;
 }
 
 .menu {
@@ -193,10 +209,33 @@ input[type="number"] {
 }
 
 .hist {
-  margin: 0 100px;
+  /* margin: 0 100px; */
 }
 
-.hist-text {
+table {
+  width: 100%;
+  margin: 0px 50px 40px 50px;
+  border: 2px solid rgb(185, 185, 185);
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table thead {
+  background-color: rgb(185, 185, 185);
+  color: white;
+}
+
+table th {
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+table td {
+  padding: 10px 12px;
+  border-bottom: 2px solid rgb(185, 185, 185);
+}
+
+/* .hist-text {
   margin: 0 100px;
   padding: 20px;
   font-size: 24px;
@@ -243,7 +282,7 @@ td {
 
 .hist-table .action {
   text-align: center;
-}
+} */
 
 @media only screen and (max-width: 768px) {
   nav {

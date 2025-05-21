@@ -42,7 +42,6 @@ if (!(isset($_SESSION['role']))) {
                             <tr>
                                 <th>No</th>
                                 <th>Nama Surat</th>
-                                <th>Jenis Surat</th>
                                 <th>Tanggal Masuk</th>
                                 <th>Tanggal Keluar</th>
                                 <th>Status</th>
@@ -55,7 +54,6 @@ if (!(isset($_SESSION['role']))) {
                                 <tr>
                                     <td><?= $i; ?></td>
                                     <td><?= $form['nama_surat'] ?></td>
-                                    <td><?= $form['jenis_surat'] ?></td>
                                     <td><?= $form['tgl_masuk'] ?></td>
                                     <td><?= $form['tgl_keluar'] ?></td>
                                     <td><?= $form['status'] ?></td>
@@ -64,8 +62,7 @@ if (!(isset($_SESSION['role']))) {
                                         if ($form['status'] == "Proses") {
                                         ?>
                                             <div class="action">
-                                                <a href="editform.php?form_id=<?= $form['form_id'] ?>"><i class="bx bxs-edit" style="font-size: 25px; color: #ffc801"></i></a>
-                                                <a href="deleteform.php?form_id=<?= $form['form_id'] ?>"><i class="bx bxs-trash" style="font-size: 25px; color: #DF2E38"></i></a>
+                                                <a href="detailform.php?form_id=<?= $form['form_id'] ?>">Lihat</a>
                                             </div>
                                         <?php
                                         } else if ($form['status'] == "Setuju") {

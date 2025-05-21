@@ -23,3 +23,26 @@ function isInputNumber(evt) {
     evt.preventDefault();
   }
 }
+
+function loadForm(select) {
+  const selectedValue = select.value;
+  const formContainer = document.getElementById("form-container");
+
+  if (selectedValue === "") {
+    formContainer.innerHTML = "";
+    return;
+  }
+
+  fetch(`surat/${selectedValue}.php`)
+    .then((response) => {
+      if (!response.ok) throw new Error("Form gagal dimuat");
+      return response.text();
+    })
+    .then((html) => {
+      formContainer.innerHTML = html;
+    })
+    .catch((error) => {
+      formContainer.innerHTML = "<p>Terjadi kesalahan saat memuat form.</p>";
+      console.error(error);
+    });
+}

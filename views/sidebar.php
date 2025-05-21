@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/sidebar1.css" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
@@ -28,6 +28,12 @@
                         <a href="../views/dashboard.php" class="nav-link">
                             <i class="bx bx-home-alt icon"></i>
                             <span class="link">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../views/laporan_surat.php" class="nav-link">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="link">Laporan Surat</span>
                         </a>
                     </li>
                 </ul>
