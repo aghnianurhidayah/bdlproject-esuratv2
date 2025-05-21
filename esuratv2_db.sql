@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 04:04 PM
+-- Generation Time: May 21, 2025 at 04:31 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `sk_domisili` (
-  `skd_id` int(11) NOT NULL,
+  `skd_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `sk_domisili` (
 --
 
 CREATE TABLE `sk_kelahiran` (
-  `skl_id` int(11) NOT NULL,
+  `skl_id` varchar(50) NOT NULL,
   `nik` varchar(50) NOT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `sk_kelahiran` (
 --
 
 CREATE TABLE `sk_kematian` (
-  `skm_id` int(11) NOT NULL,
+  `skm_id` varchar(50) NOT NULL,
   `nik` varchar(50) NOT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE `sk_kematian` (
 --
 
 CREATE TABLE `sk_tidak_mampu` (
-  `sktm_id` int(11) NOT NULL,
+  `sktm_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `sk_tidak_mampu` (
 --
 
 CREATE TABLE `spn_akte_kelahiran` (
-  `spn_akte_kelahiran_id` int(11) NOT NULL,
+  `spn_akte_kelahiran_id` varchar(50) NOT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
   `tgl_lahir` varchar(50) DEFAULT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE `spn_akte_kelahiran` (
 --
 
 CREATE TABLE `spn_status_perwalian` (
-  `status_perwalian_id` int(11) NOT NULL,
+  `status_perwalian_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -147,7 +147,7 @@ CREATE TABLE `spn_status_perwalian` (
 --
 
 CREATE TABLE `sp_e_ktp` (
-  `spektp_id` int(11) NOT NULL,
+  `spektp_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `sp_e_ktp` (
 --
 
 CREATE TABLE `sp_nikah` (
-  `sp_nikah_id` int(11) NOT NULL,
+  `sp_nikah_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE `sp_nikah` (
 --
 
 CREATE TABLE `sp_skck` (
-  `skck_id` int(11) NOT NULL,
+  `skck_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
