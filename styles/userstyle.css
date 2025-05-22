@@ -209,7 +209,21 @@ input[type="number"] {
 }
 
 .hist {
-  /* margin: 0 100px; */
+  margin: 0 100px;
+}
+
+.hist-text {
+  margin: 0 100px 50px 100px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.hist-table {
+  display: flex;
+  justify-content: center;
 }
 
 table {
@@ -234,55 +248,6 @@ table td {
   padding: 10px 12px;
   border-bottom: 2px solid rgb(185, 185, 185);
 }
-
-/* .hist-text {
-  margin: 0 100px;
-  padding: 20px;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--secondary-color);
-  border-bottom: 2px solid var(--primary-color);
-}
-
-.hist-table {
-  display: flex;
-  justify-content: center;
-  margin: 50px 0;
-}
-
-.hist-table table {
-  width: 90%;
-  border: 2px solid rgba(44, 68, 78, 0.6);
-  border-collapse: collapse;
-}
-
-.hist-table table thead {
-  background-color: rgba(44, 68, 78, 0.1);
-}
-
-.hist-table table th,
-td {
-  padding: 8px;
-  border: 1px solid rgba(44, 68, 78, 0.6);
-  font-size: 16px;
-}
-
-.hist-table button {
-  background-color: rgb(42, 71, 164);
-  border-style: none;
-  border-radius: 5px;
-  padding: 5px 7px;
-  color: white;
-}
-
-.hist-table button:hover {
-  opacity: 0.9;
-  cursor: pointer;
-}
-
-.hist-table .action {
-  text-align: center;
-} */
 
 @media only screen and (max-width: 768px) {
   nav {

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require "../../connect/db_connect.php";
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     header("Location: login.php");
     http_response_code(403);
@@ -8,8 +10,21 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     if ($_SESSION['role'] == "user") {
 
         if (isset($_POST['submitform'])) {
-            $nosurat = "0";
-            $nik = $_SESSION['nik'];
+            $query = "SELECT sp_nikah_id FROM sp_nikah ORDER BY sp_nikah_id DESC LIMIT 1";
+            $result = $conn->query($query);
+
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+
+                $last_id_num = (int)substr($row['sp_nikah_id'], 5);
+                $new_id_num = $last_id_num + 1;
+            } else {
+                $new_id_num = 1;
+            }
+
+            $sp_nikah_id = "NKH-" . str_pad($new_id_num, 4, '0', STR_PAD_LEFT);
+            $nik_user = $_SESSION['nik'];
+            $nik = $_POST['nik'];
             $nokk = $_POST['nokk'];
             $nama = $_POST['nama'];
             $tl = $_POST['tl'];
@@ -20,12 +35,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
             $wn = $_POST['wn'];
             $fkk = strtolower(end(explode('.', $_FILES['fkk']['name'])));
             $fktp = strtolower(end(explode('.', $_FILES['fktp']['name'])));
-            $surat = $_POST['surat'];
-            $status = "Proses";
 
-            $file_kk = "kk.$surat.$nama.$fkk";
-            $file_ktp = "ktp.$surat.$nama.$fktp";
-            $file_foto = "foto.$surat.$nama.$ffoto";
+            $file_kk = "kk.$nama.$fkk";
+            $file_ktp = "ktp.$nama.$fktp";
+            $file_foto = "foto.$nama.$ffoto";
             $tmp_kk = $_FILES['fkk']['tmp_name'];
             $tmp_ktp = $_FILES['fktp']['tmp_name'];
             $tmp_foto = $_FILES['ffoto']['tmp_name'];
@@ -50,19 +63,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
                 $file_foto = '';
             }
 
-            $insert_form = "INSERT INTO forms VALUES ('', '$nosurat', '$nik', '$nokk', '$nama', '$tl', '$tk', '$jk', '$agama', '$alamat', '$pekerjaan', '$wn', '$ayah', '$ibu', '$file_kk', '$file_ktp', '$file_foto', '$surat', '$status')";
+            $insert_surat = "INSERT INTO surat VALUES ('$sp_nikah_id', '$nik_user', 'Surat Pengantar Nikah', 'Surat Pengantar','0', '$tgl_masuk', '0', 'Proses')";
             $result = $conn->query($insert_form);
-
+            
             if ($result) {
-
-                $fk_form_id = $conn->insert_id;
-                $insert_surat = "INSERT INTO surat VALUES ('$fk_form_id', '$nik', 'Surat Keterangan', '$tgl_masuk', '0')";
-                $result = $conn->query($insert_surat);
+                
+                $insert_form = "INSERT INTO forms VALUES ('$sp_nikah_id', '$nik', '$nokk', '$nama', '$tl', '$jk', '$agama', '$alamat', '$pekerjaan', '$wn', '$file_kk', '$file_ktp', '$file_foto')";
+                $result = $conn->query($insert_form);
 
                 echo "
                     <script>
                         alert('Formulir Berhasil Diisi!');
-                        document.location.href = 'hist.php';
+                        document.location.href = '../hist.php';
                     </script>";
             } else {
                 echo "
@@ -82,7 +94,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
         </head>
 
         <body>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="surat/pengantar_nikah.php" method="post" enctype="multipart/form-data">
                 <div class="input-box d-none" id="input-nik">
                     <label for="nik">NIK</label>
                     <input type="number" name="nik" id="nik" class="textfield" onkeypress="isInputNumber(event)" minlength="16" maxlength="16" class="textfield" placeholder="Masukan No. KK">

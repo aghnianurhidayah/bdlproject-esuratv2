@@ -10,14 +10,14 @@ if (!(isset($_SESSION['role']))) {
 
         if (isset($_POST['cari'])) {
             $keyword = $_POST['cari'];
-            $sql_form = mysqli_query($conn, "SELECT * FROM forms JOIN surat ON forms.form_id = surat.fk_form_id WHERE no_surat LIKE '%$keyword%'");
+            $sql_surat = mysqli_query($conn, "SELECT * FROM surat WHERE surat_id LIKE '%$keyword%'");
         } else {
-            $sql_form = mysqli_query($conn, "SELECT * FROM forms JOIN surat ON forms.form_id = surat.fk_form_id");
+            $sql_surat = mysqli_query($conn, "SELECT * FROM surat");
         }
 
-        $forms = [];
-        while ($row = mysqli_fetch_assoc($sql_form)) {
-            $forms[] = $row;
+        $surat = [];
+        while ($row = mysqli_fetch_assoc($sql_surat)) {
+            $surat[] = $row;
         }
 
 ?>
@@ -68,15 +68,15 @@ if (!(isset($_SESSION['role']))) {
                             </thead>
                             <tbody>
                                 <?php $i = 1;
-                                foreach ($forms as $form) : ?>
+                                foreach ($surat as $srt) : ?>
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><?= $form['tgl_masuk'] ?></td>
-                                        <td><?= $form['nik'] ?></td>
-                                        <td><?= $form['nama_surat'] ?></td>
-                                        <td><?= $form['status'] ?></td>
+                                        <td><?= $srt['tgl_masuk'] ?></td>
+                                        <td><?= $srt['nik_user'] ?></td>
+                                        <td><?= $srt['nama_surat'] ?></td>
+                                        <td><?= $srt['status'] ?></td>
                                         <td>
-                                            <a href="../views/previewsurat.php?form_id=<?= $form['form_id'] ?>">Lihat</a>
+                                            <a href="../views/previewsurat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
                                         </td>
                                     </tr>
                                 <?php $i++;

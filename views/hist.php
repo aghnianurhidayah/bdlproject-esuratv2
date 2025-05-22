@@ -9,11 +9,11 @@ if (!(isset($_SESSION['role']))) {
     if ($_SESSION['role'] == "user") {
 
         $get_nik = $_SESSION['nik'];
-        $sql_form = mysqli_query($conn, "SELECT * FROM forms JOIN surat ON forms.form_id = surat.fk_form_id WHERE forms.nik = $get_nik");
+        $sql_surat = mysqli_query($conn, "SELECT * FROM surat WHERE surat.nik_user = $get_nik");
 
-        $forms = [];
-        while ($row = mysqli_fetch_assoc($sql_form)) {
-            $forms[] = $row;
+        $surat = [];
+        while ($row = mysqli_fetch_assoc($sql_surat)) {
+            $surat[] = $row;
         }
 ?>
 
@@ -31,6 +31,7 @@ if (!(isset($_SESSION['role']))) {
 
         <body>
             <?php include 'navbar.php'; ?>
+
 
             <div class="hist">
                 <div class="hist-text">
@@ -50,25 +51,25 @@ if (!(isset($_SESSION['role']))) {
                         </thead>
                         <tbody>
                             <?php $i = 1;
-                            foreach ($forms as $form) : ?>
+                            foreach ($surat as $srt) : ?>
                                 <tr>
                                     <td><?= $i; ?></td>
-                                    <td><?= $form['nama_surat'] ?></td>
-                                    <td><?= $form['tgl_masuk'] ?></td>
-                                    <td><?= $form['tgl_keluar'] ?></td>
-                                    <td><?= $form['status'] ?></td>
+                                    <td><?= $srt['nama_surat'] ?></td>
+                                    <td><?= $srt['tgl_masuk'] ?></td>
+                                    <td><?= $srt['tgl_keluar'] ?></td>
+                                    <td><?= $srt['status'] ?></td>
                                     <td>
                                         <?php
-                                        if ($form['status'] == "Proses") {
+                                        if ($srt['status'] == "Proses") {
                                         ?>
                                             <div class="action">
-                                                <a href="detailform.php?form_id=<?= $form['form_id'] ?>">Lihat</a>
+                                                <a href="detailsurat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
                                             </div>
                                         <?php
-                                        } else if ($form['status'] == "Setuju") {
+                                        } else if ($srt['status'] == "Setuju") {
                                         ?>
                                             <div class="action">
-                                                <a href="../surat/<?= $form['nama_surat'] ?>.php?form_id=<?= $form['form_id'] ?>" target="_blank"><button>Unduh</button></a>
+                                                <a href="../surat/<?= $srt['nama_surat'] ?>.php?surat_id=<?= $form['surat_id'] ?>" target="_blank"><button>Unduh</button></a>
                                             </div>
                                         <?php
                                         }

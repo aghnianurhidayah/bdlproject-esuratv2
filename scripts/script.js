@@ -24,6 +24,55 @@ function isInputNumber(evt) {
   }
 }
 
+// function loadForm(select) {
+//   const selectedValue = select.value;
+//   const formContainer = document.getElementById("form-container");
+
+//   if (selectedValue === "") {
+//     formContainer.innerHTML = "";
+//     return;
+//   }
+
+//   fetch(`surat/${selectedValue}.php`)
+//     .then((response) => {
+//       if (!response.ok) throw new Error("Form gagal dimuat");
+//       return response.text();
+//     })
+//     .then((html) => {
+//       formContainer.innerHTML = html;
+
+//       // Ambil form yang baru dimuat
+//       const loadedForm = formContainer.querySelector("form");
+
+//       if (loadedForm) {
+//         loadedForm.addEventListener("submit", function (e) {
+//           e.preventDefault(); // Mencegah submit default
+
+//           const formData = new FormData(loadedForm);
+
+//           fetch(loadedForm.action, {
+//             method: loadedForm.method,
+//             body: formData,
+//           })
+//             .then((response) => response.text())
+//             .then((result) => {
+//               formContainer.innerHTML = result;
+
+//               // Jika ingin redirect setelah submit sukses
+//               if (result.includes("Formulir Berhasil Diisi")) {
+//                 alert("Formulir Berhasil Diisi!");
+//                 window.location.href = "hist.php";
+//               }
+//             })
+//             .catch((error) => {
+//               console.error("Gagal mengirim form:", error);
+//               alert("Terjadi kesalahan saat mengirim formulir.");
+//             });
+//         });
+//       }
+//     });
+// }
+
 function loadForm(select) {
   const selectedValue = select.value;
   const formContainer = document.getElementById("form-container");
