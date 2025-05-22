@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2025 at 09:13 AM
+-- Generation Time: May 22, 2025 at 12:00 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -56,7 +56,6 @@ INSERT INTO `sk_domisili` (`skd_id`, `nik`, `no_kk`, `nama`, `tgl_lahir`, `jenis
 
 CREATE TABLE `sk_kelahiran` (
   `skl_id` varchar(50) NOT NULL,
-  `nik` varchar(50) NOT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
@@ -68,6 +67,13 @@ CREATE TABLE `sk_kelahiran` (
   `nama_ibu` varchar(50) DEFAULT NULL,
   `file_kk` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sk_kelahiran`
+--
+
+INSERT INTO `sk_kelahiran` (`skl_id`, `no_kk`, `nama`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `kewarganagaraan`, `nama_ayah`, `nama_ibu`, `file_kk`) VALUES
+('LHR-0001', '4', '4', '2025-05-22', 'Laki-Laki', 'Islam', '4', '4', '4', '4', 'kk.4.jpg');
 
 -- --------------------------------------------------------
 
@@ -127,6 +133,13 @@ CREATE TABLE `spn_akte_kelahiran` (
   `nama_ibu` varchar(50) DEFAULT NULL,
   `file_kk` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `spn_akte_kelahiran`
+--
+
+INSERT INTO `spn_akte_kelahiran` (`spn_akte_kelahiran_id`, `no_kk`, `nama`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `kewarganegaraan`, `nama_ayah`, `nama_ibu`, `file_kk`) VALUES
+('AKL-0001', '5', '5', '2025-05-22', 'Laki-Laki', 'Islam', '5', '5', '5', '5', 'kk.5.jpg');
 
 -- --------------------------------------------------------
 
@@ -223,7 +236,9 @@ CREATE TABLE `sp_skck` (
 
 CREATE TABLE `surat` (
   `surat_id` varchar(50) NOT NULL,
-  `nik` varchar(16) NOT NULL,
+  `nik_user` varchar(16) NOT NULL,
+  `nama_surat` varchar(50) NOT NULL,
+  `jenis_surat` varchar(50) NOT NULL,
   `no_surat` varchar(50) NOT NULL,
   `tgl_masuk` date NOT NULL,
   `tgl_keluar` date NOT NULL,
@@ -234,9 +249,11 @@ CREATE TABLE `surat` (
 -- Dumping data for table `surat`
 --
 
-INSERT INTO `surat` (`surat_id`, `nik`, `no_surat`, `tgl_masuk`, `tgl_keluar`, `status`) VALUES
-('DOM-0001', '1234567890000001', '0', '2025-05-22', '0000-00-00', 'proses'),
-('EKTP-0001', '1234567890000001', '0', '2025-05-22', '0000-00-00', 'proses');
+INSERT INTO `surat` (`surat_id`, `nik_user`, `nama_surat`, `jenis_surat`, `no_surat`, `tgl_masuk`, `tgl_keluar`, `status`) VALUES
+('AKL-0001', '1234567890000001', 'Surat Pernyataan Tidak Memiliki Akte Kelahiran', 'Surat Pernyataan', '0', '2025-05-22', '0000-00-00', 'Proses'),
+('DOM-0001', '1234567890000001', '', '', '0', '2025-05-22', '0000-00-00', 'proses'),
+('EKTP-0001', '1234567890000001', '', '', '0', '2025-05-22', '0000-00-00', 'proses'),
+('LHR-0001', '1234567890000001', '', '', '0', '2025-05-22', '0000-00-00', 'proses');
 
 -- --------------------------------------------------------
 
