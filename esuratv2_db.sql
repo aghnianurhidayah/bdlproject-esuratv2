@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 04:31 PM
+-- Generation Time: May 22, 2025 at 09:13 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,6 +40,13 @@ CREATE TABLE `sk_domisili` (
   `file_kk` varchar(50) DEFAULT NULL,
   `file_ktp` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sk_domisili`
+--
+
+INSERT INTO `sk_domisili` (`skd_id`, `nik`, `no_kk`, `nama`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `kewarganagaraan`, `file_kk`, `file_ktp`) VALUES
+('DOM-0001', '2', '2', '2', '2025-05-22', 'Laki-Laki', 'Islam', '2', '2', 'kk..2.jpg', 'ktp..2.jpg');
 
 -- --------------------------------------------------------
 
@@ -128,7 +135,7 @@ CREATE TABLE `spn_akte_kelahiran` (
 --
 
 CREATE TABLE `spn_status_perwalian` (
-  `status_perwalian_id` varchar(50) NOT NULL,
+  `spn_status_perwalian_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -160,6 +167,13 @@ CREATE TABLE `sp_e_ktp` (
   `file_ktp` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sp_e_ktp`
+--
+
+INSERT INTO `sp_e_ktp` (`spektp_id`, `nik`, `no_kk`, `nama`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `kewarganagaraan`, `file_kk`, `file_ktp`) VALUES
+('EKTP-0001', '1', '1', '1', '2025-05-22', 'Laki-Laki', 'Islam', '1', '1', 'kk.1.jpg', 'ktp.1.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -189,7 +203,7 @@ CREATE TABLE `sp_nikah` (
 --
 
 CREATE TABLE `sp_skck` (
-  `skck_id` varchar(50) NOT NULL,
+  `sp_skck_id` varchar(50) NOT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `no_kk` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
@@ -208,12 +222,21 @@ CREATE TABLE `sp_skck` (
 --
 
 CREATE TABLE `surat` (
-  `id_surat` int(11) NOT NULL,
+  `surat_id` varchar(50) NOT NULL,
+  `nik` varchar(16) NOT NULL,
   `no_surat` varchar(50) NOT NULL,
   `tgl_masuk` date NOT NULL,
   `tgl_keluar` date NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat`
+--
+
+INSERT INTO `surat` (`surat_id`, `nik`, `no_surat`, `tgl_masuk`, `tgl_keluar`, `status`) VALUES
+('DOM-0001', '1234567890000001', '0', '2025-05-22', '0000-00-00', 'proses'),
+('EKTP-0001', '1234567890000001', '0', '2025-05-22', '0000-00-00', 'proses');
 
 -- --------------------------------------------------------
 
@@ -243,61 +266,19 @@ INSERT INTO `users` (`id_user`, `nik`, `nama`, `password`) VALUES
 -- Indexes for table `sk_domisili`
 --
 ALTER TABLE `sk_domisili`
-  ADD PRIMARY KEY (`skd_id`);
-
---
--- Indexes for table `sk_kelahiran`
---
-ALTER TABLE `sk_kelahiran`
-  ADD PRIMARY KEY (`skl_id`);
-
---
--- Indexes for table `sk_kematian`
---
-ALTER TABLE `sk_kematian`
-  ADD PRIMARY KEY (`skm_id`);
-
---
--- Indexes for table `sk_tidak_mampu`
---
-ALTER TABLE `sk_tidak_mampu`
-  ADD PRIMARY KEY (`sktm_id`);
-
---
--- Indexes for table `spn_akte_kelahiran`
---
-ALTER TABLE `spn_akte_kelahiran`
-  ADD PRIMARY KEY (`spn_akte_kelahiran_id`);
-
---
--- Indexes for table `spn_status_perwalian`
---
-ALTER TABLE `spn_status_perwalian`
-  ADD PRIMARY KEY (`status_perwalian_id`);
+  ADD KEY `fk_skd_id` (`skd_id`);
 
 --
 -- Indexes for table `sp_e_ktp`
 --
 ALTER TABLE `sp_e_ktp`
-  ADD PRIMARY KEY (`spektp_id`);
-
---
--- Indexes for table `sp_nikah`
---
-ALTER TABLE `sp_nikah`
-  ADD PRIMARY KEY (`sp_nikah_id`);
-
---
--- Indexes for table `sp_skck`
---
-ALTER TABLE `sp_skck`
-  ADD PRIMARY KEY (`skck_id`);
+  ADD KEY `fk_spektp_id` (`spektp_id`);
 
 --
 -- Indexes for table `surat`
 --
 ALTER TABLE `surat`
-  ADD PRIMARY KEY (`id_surat`);
+  ADD PRIMARY KEY (`surat_id`);
 
 --
 -- Indexes for table `users`
@@ -314,6 +295,22 @@ ALTER TABLE `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sk_domisili`
+--
+ALTER TABLE `sk_domisili`
+  ADD CONSTRAINT `fk_skd_id` FOREIGN KEY (`skd_id`) REFERENCES `surat` (`surat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sp_e_ktp`
+--
+ALTER TABLE `sp_e_ktp`
+  ADD CONSTRAINT `fk_spektp_id` FOREIGN KEY (`spektp_id`) REFERENCES `surat` (`surat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
