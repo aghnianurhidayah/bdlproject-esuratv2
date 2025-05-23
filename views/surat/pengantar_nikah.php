@@ -15,7 +15,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-
                 $last_id_num = (int)substr($row['sp_nikah_id'], 5);
                 $new_id_num = $last_id_num + 1;
             } else {
@@ -35,6 +34,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
             $wn = $_POST['wn'];
             $fkk = strtolower(end(explode('.', $_FILES['fkk']['name'])));
             $fktp = strtolower(end(explode('.', $_FILES['fktp']['name'])));
+            $ffoto = strtolower(end(explode('.', $_FILES['ffoto']['name'])));
 
             $file_kk = "kk.$nama.$fkk";
             $file_ktp = "ktp.$nama.$fktp";

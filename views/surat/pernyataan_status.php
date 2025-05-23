@@ -15,12 +15,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-
-                // Ambil bagian angkanya saja dari ID (contoh: dari EKTP-0025 jadi 25)
                 $last_id_num = (int)substr($row['spn_status_perwalian_id'], 5);
                 $new_id_num = $last_id_num + 1;
             } else {
-                // Jika belum ada data, mulai dari 1
                 $new_id_num = 1;
             }
 
@@ -49,9 +46,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             $insert_surat = "INSERT INTO surat VALUES ('$spn_status_perwalian_id', '$nik_user', 'Surat Pernyataan Janda Duda', 'Surat Pernyataan', '0', '$tgl_masuk', '0', 'Proses')";
             $result = $conn->query($insert_surat);
-            
+
             if ($result) {
-                
+
                 $insert_form = "INSERT INTO spn_status_perwalian VALUES ('$spn_status_perwalian_id', '$nik', '$nokk', '$nama', '$tl', '$jk', '$agama', '$alamat', '$wn', '$file_ktp')";
                 $result = $conn->query($insert_form);
 

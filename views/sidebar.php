@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/sidebar.css" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -30,9 +31,9 @@
                             <span class="link">Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="list">
                         <a href="../views/laporan_surat.php" class="nav-link">
-                            <i class="bx bx-home-alt icon"></i>
+                            <i class="bx bxr bx-envelope icon"></i> 
                             <span class="link">Laporan Surat</span>
                         </a>
                     </li>

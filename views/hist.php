@@ -63,7 +63,30 @@ if (!(isset($_SESSION['role']))) {
                                         if ($srt['status'] == "Proses") {
                                         ?>
                                             <div class="action">
-                                                <a href="detailsurat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
+                                                <?php
+                                                $surat_id = $srt['surat_id'];
+
+                                                if (str_starts_with($surat_id, 'DOM')) {
+                                                    $link = "detail/keterangan_domisili.php?surat_id=$surat_id";
+                                                } elseif (str_starts_with($surat_id, 'LHR')) {
+                                                    $link = "detail/keterangan_kelahiran.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'KMT')) {
+                                                    $link = "detail/keterangan_kematian.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'KTM')) {
+                                                    $link = "detail/keterangan_tidak_mampu.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'EKTP')) {
+                                                    $link = "detail/pengantar_e_ktp.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'NKH')) {
+                                                    $link = "detail/pengantar_nikah.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'KCK')) {
+                                                    $link = "detail/pengantar_skck.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'AKL')) {
+                                                    $link = "detail/pernyataan_akte_kelahiran.php?surat_id=$surat_id";
+                                                }elseif (str_starts_with($surat_id, 'STS')) {
+                                                    $link = "detail/pernyataan_status.php?surat_id=$surat_id";
+                                                }
+                                                ?>
+                                                <a href="<?= $link ?>">Lihat</a>
                                             </div>
                                         <?php
                                         } else if ($srt['status'] == "Setuju") {

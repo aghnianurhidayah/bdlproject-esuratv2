@@ -1,5 +1,5 @@
 <?php
-    require 'dompdf/autoload.inc.php';
+    require '/e-suratv2/dompdf/autoload.inc.php';
     require '../connect/db_connect.php';
 
     use Dompdf\Dompdf;

@@ -15,12 +15,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-
-                // Ambil bagian angkanya saja dari ID (contoh: dari EKTP-0025 jadi 25)
                 $last_id_num = (int)substr($row['spektp_id'], 5);
                 $new_id_num = $last_id_num + 1;
             } else {
-                // Jika belum ada data, mulai dari 1
                 $new_id_num = 1;
             }
 

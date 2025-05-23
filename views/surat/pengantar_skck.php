@@ -15,7 +15,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-
                 $last_id_num = (int)substr($row['sp_skck_id'], 5);
                 $new_id_num = $last_id_num + 1;
             } else {
