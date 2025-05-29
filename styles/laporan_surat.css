@@ -60,6 +60,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin: 0px 50px 50px 50px;
+    gap: 40px;
 }
 
 input[type="text"] {
@@ -89,9 +90,7 @@ input[type="date"]:focus {
 }
 
 .form-group select {
-    margin-top: 35px;
     justify-content: space-between;
-    margin-bottom: 8px;
     font-weight: lighter;
     color: var(--text-color);
     width: 100%;
@@ -113,6 +112,12 @@ select[name="jenis_surat"]:hover {
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.export a {
+    display: flex;
+    justify-content: right;
+    margin: 0 50px 15px 0;
 }
 
 .textfield {
