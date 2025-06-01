@@ -10,7 +10,7 @@ if (!(isset($_SESSION['role']))) {
     if ($_SESSION['role'] == "user") {
 
         $surat_id = $_GET['surat_id'];
-        $cancelsurat = mysqli_query($conn, "UPDATE surat SET status = 'Batal' WHERE surat_id = $surat_id");
+        $cancelsurat = mysqli_query($conn, "UPDATE surat SET status = 'Batal' WHERE surat_id = '$surat_id'");
 
         if ($cancelsurat) {
             echo "

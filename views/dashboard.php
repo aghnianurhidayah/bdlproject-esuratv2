@@ -30,7 +30,7 @@ if (!(isset($_SESSION['role']))) {
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title>e-SukMa | Dashboard</title>
-            <link rel="stylesheet" href="../styles/dashboard.css" />
+            <link rel="stylesheet" href="../styles/adminsurat.css" />
             <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
         </head>
 
@@ -76,7 +76,7 @@ if (!(isset($_SESSION['role']))) {
                                         <td><?= $srt['nama_surat'] ?></td>
                                         <td><?= $srt['status'] ?></td>
                                         <td>
-                                            <a href="../views/previewsurat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
+                                            <a href="../views/preview_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
                                         </td>
                                     </tr>
                                 <?php $i++;
@@ -87,7 +87,6 @@ if (!(isset($_SESSION['role']))) {
                 </div>
             </section>
 
-            <script src="../scripts/script.js"></script>
         </body>
 
         </html>

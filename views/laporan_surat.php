@@ -91,6 +91,7 @@ $(document).ready(function () {
                         <input type="date" name="ti" id="ti" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="js">Jenis Surat</label>
                         <select name="jenis_surat" id="jenis_surat" class="form-control">
                             <option value="">Jenis Surat</option>
                             <option value="Surat Keterangan">Surat Keterangan</option>
@@ -99,6 +100,7 @@ $(document).ready(function () {
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="stat">Status</label>
                         <select name="status" id="status" class="form-control">
                             <option value="">Status</option>
                             <option value="Proses">Proses</option>
@@ -107,6 +109,9 @@ $(document).ready(function () {
                         </select>
                     </div>
                 </form>
+            </div>
+            <div class="export">
+                <a href="..\laporan\export_laporan.php">Export PDF</a>
             </div>
 
             <!-- Tabel Data -->
@@ -128,7 +133,5 @@ $(document).ready(function () {
             </div>
         </div>
     </section>
-
-    <script src="../scripts/script.js"></script>
 </body>
 </html>

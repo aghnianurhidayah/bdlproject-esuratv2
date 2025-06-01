@@ -10,7 +10,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     if ($_SESSION['role'] == "user") {
 
         if (isset($_POST['submitform'])) {
-            $query = "SELECT spn_status_perwalian_id FROM sk_domisili ORDER BY spn_status_perwalian_id DESC LIMIT 1";
+            $query = "SELECT spn_status_perwalian_id FROM spn_status_perwalian ORDER BY spn_status_perwalian_id DESC LIMIT 1";
             $result = $conn->query($query);
 
             if ($result && $result->num_rows > 0) {

@@ -49,7 +49,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             if ($result) {
 
-                $insert_form = "INSERT INTO sk_kelahiran VALUES ('$sp_skck_id', '$nik', '$nokk', '$nama', '$tl', '$jk', '$agama', '$alamat', '$pekerjaan', '$file_ktp')";
+                $insert_form = "INSERT INTO sp_skck VALUES ('$sp_skck_id', '$nik', '$nokk', '$nama', '$tl', '$jk', '$agama', '$alamat', '$pekerjaan', '$file_ktp')";
                 $result = $conn->query($insert_form);
 
                 echo "

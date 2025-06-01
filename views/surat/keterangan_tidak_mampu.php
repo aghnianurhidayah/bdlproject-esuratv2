@@ -55,9 +55,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 
             $insert_surat = "INSERT INTO surat VALUES ('$sktm_id', '$nik_user', 'Surat Keterangan Tidak Mampu', 'Surat Keterangan','0', '$tgl_masuk', '0', 'Proses')";
             $result = $conn->query($insert_surat);
-            
+
             if ($result) {
-                
+
                 $insert_form = "INSERT INTO forms VALUES ('$sktm_id', '$nik', '$nokk', '$nama', '$tl', '$jk', '$agama', '$alamat', '$wn', '$file_kk', '$file_ktp')";
                 $result = $conn->query($insert_form);
 
