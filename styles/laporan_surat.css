@@ -55,11 +55,20 @@ body {
 }
 
 .filter form {
+<<<<<<< HEAD
   display: flex;
   max-width: 100%;
   flex-direction: row;
   justify-content: space-between;
   margin: 0px 50px 50px 50px;
+=======
+    display: flex;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 50px 50px 50px;
+    gap: 40px;
+>>>>>>> 77142b3dc289bd530712c0a26ae3e418cd51e7f6
 }
 
 input[type="text"] {
@@ -88,8 +97,15 @@ input[type="date"]:focus {
 }
 
 .form-group select {
+<<<<<<< HEAD
   color: var(--text-color);
   width: 100%;
+=======
+    justify-content: space-between;
+    font-weight: lighter;
+    color: var(--text-color);
+    width: 100%;
+>>>>>>> 77142b3dc289bd530712c0a26ae3e418cd51e7f6
 }
 
 select[name="jenis_surat"]:hover {
@@ -113,6 +129,12 @@ select[name="jenis_surat"]:hover {
   display: flex;
   justify-content: right;
   margin: 0 50px 15px 0;
+}
+
+.export a {
+    display: flex;
+    justify-content: right;
+    margin: 0 50px 15px 0;
 }
 
 .textfield {
