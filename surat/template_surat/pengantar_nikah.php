@@ -1,9 +1,8 @@
 <?php
 require "../connect/db_connect.php";
 
-$form_id = $_GET['form_id'];
-
-$get = mysqli_query($conn, "SELECT * FROM forms JOIN surat ON forms.form_id = surat.fk_form_id WHERE form_id = $form_id");
+$surat_id = $_GET['surat_id'];
+$get = mysqli_query($conn, "SELECT * FROM surat JOIN sp_nikah ON surat.surat_id = sp_nikah.sp_nikah_id WHERE surat_id = '$surat_id'");
 
 $form = [];
 while ($row = mysqli_fetch_assoc($get)) {

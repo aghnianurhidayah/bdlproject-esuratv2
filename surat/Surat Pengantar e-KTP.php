@@ -1,12 +1,12 @@
 <?php
-    require '../dompdf/autoload.inc.php';
+   require '../dompdf/autoload.inc.php';
     require '../connect/db_connect.php';
 
     use Dompdf\Dompdf;
 
     $dompdf = new Dompdf();
     ob_start();
-    require('template_surat/pengantar_skck.php');
+    require('template_surat/pengantar_ektp.php');
     $html = ob_get_contents();
     ob_get_clean();
 
@@ -17,6 +17,6 @@
     $dompdf->render();
 
     $tgl = date('Y-m-d');
-    $dompdf->stream('Surat Pengantar SKCK_'.$tgl.'.pdf', ['Attachment'=>false]);
+    $dompdf->stream('Surat Pengantar e-KTP_'.$tgl.'.pdf', ['Attachment'=>false]);
 
 ?>

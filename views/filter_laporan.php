@@ -1,46 +1,53 @@
 <?php
-session_start();
-require "../connect/db_connect.php";
 
-if (!(isset($_SESSION['role'])) || $_SESSION['role'] != "admin") {
-    echo json_encode(['error' => 'Unauthorized']);
-    exit();
-}
+$ta = $_GET['ta'] ?? '';
+$ti = $_GET['ti'] ?? '';
+$jenis_surat = $_GET['jenis_surat'] ?? '';
+$status = $_GET['status'] ?? '';
 
-$from = $_POST['ta'] ?? '';
-$to = $_POST['ti'] ?? '';
-$jenis = $_POST['jenis_surat'] ?? '';
-$status = $_POST['status'] ?? '';
-
-$query = "SELECT tgl_masuk, jenis_surat, status, COUNT(*) AS jumlah 
+$query = "SELECT tgl_masuk, tgl_keluar, jenis_surat, status, COUNT(*) as jumlah 
           FROM surat 
           WHERE 1=1";
 
-if (!empty($from)) {
-    $query .= " AND tgl_masuk >= '$from'";
+$params = [];
+$types = "";
+
+if (!empty($ta)) {
+    $query .= " AND tgl_masuk >= ?";
+    $params[] = $ta;
+    $types .= "s";
+}
+if (!empty($ti)) {
+    $query .= " AND tgl_masuk <= ?";
+    $params[] = $ti;
+    $types .= "s";
+}
+if (!empty($jenis_surat)) {
+    $query .= " AND jenis_surat = ?";
+    $params[] = $jenis_surat;
+    $types .= "s";
+}
+if (!empty($status)) {
+    $query .= " AND status = ?";
+    $params[] = $status;
+    $types .= "s";
 }
 
-if (!empty($to)) {
-    $query .= " AND tgl_masuk <= '$to'";
+$query .= " GROUP BY tgl_masuk, tgl_keluar, jenis_surat, status ORDER BY tgl_masuk DESC";
+
+$stmt = $conn->prepare($query);
+
+if ($params) {
+    $stmt->bind_param($types, ...$params);
 }
 
-if (!empty($jenis) && $jenis !== "Jenis Surat") {
-    $query .= " AND jenis_surat = '$jenis'";
-}
+$stmt->execute();
 
-if (!empty($status) && $status !== "Status") {
-    $query .= " AND status = '$status'";
-}
-
-$query .= " GROUP BY tgl_masuk, jenis_surat, status 
-            ORDER BY tgl_masuk DESC";
-
-$sql_surat = mysqli_query($conn, $query);
+$result = $stmt->get_result();
 
 $surat = [];
-while ($row = mysqli_fetch_assoc($sql_surat)) {
+while ($row = $result->fetch_assoc()) {
     $surat[] = $row;
 }
 
-echo json_encode($surat);
-?>
+return $surat;

@@ -24,8 +24,11 @@ if (isset($_POST['signup'])) {
         if (!$check->num_rows > 0) {
             $result = mysqli_query($conn, "INSERT INTO users VALUES ('', '$nik', '$name', '$password')");
             if ($result) {
-                echo "<script>alert('Registrasi Berhasil')</script>";
-                header("Location: login.php");
+                 echo "
+                <script>
+                    alert('Registrasi Berhasil');
+                    document.location.href = 'login.php';
+                </script>";
             } else {
                 echo "<script>alert('Terjadi kesalahan')</script>";
             }

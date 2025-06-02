@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 session_start();
 require "../../connect/db_connect.php";
@@ -20,8 +18,10 @@ if (!(isset($_SESSION['role']))) {
 } else {
     if (isset($_POST['accform'])) {
         $y = date("Y");
-        $get_no_surat = $_POST['no_surat'];
-        $no_surat = "172/$kode_surat/$y/$get_no_surat";
+        $get_no_surat = $GET['no_surat'];
+        list($kode_surat, $nomor_urut) = explode("-", $surat_id);
+        $no_surat = "172/$kode_surat/$y/$nomor_urut";
+        $tgl_keluar = date('Y-m-d');
 
         $acc_surat = "UPDATE surat SET no_surat = '$no_surat', tgl_keluar = '$tgl_keluar', status = 'Diterima' WHERE surat_id = '$surat_id'";
         $result = $conn->query($acc_surat);
@@ -29,11 +29,13 @@ if (!(isset($_SESSION['role']))) {
             echo "
                     <script>
                         alert('Form Diterima!');
+                        document.location.href = '../dashboard.php';
                     </script>";
         } else {
             echo "
                     <script>
                         alert('Form Gagal Diterima!');
+                        document.location.href = '../dashboard.php';
                     </script>";
         }
     } else if (isset($_POST['rejform'])) {
@@ -42,12 +44,14 @@ if (!(isset($_SESSION['role']))) {
         if ($result) {
             echo "
                     <script>
-                        alert('Form Diterima!');
+                        alert('Form Ditolak!');
+                        document.location.href = '../dashboard.php';
                     </script>";
         } else {
             echo "
                     <script>
-                        alert('Form Gagal Diterima!');
+                        alert('Form Gagal Ditolak!');
+                        document.location.href = '../dashboard.php';
                     </script>";
         }
     } else if (isset($_POST['updateform'])) {
@@ -92,6 +96,7 @@ if (!(isset($_SESSION['role']))) {
             echo "
                     <script>
                         alert('Formulir Gagal Diubah!');
+                        document.location.href = '../hist.php';
                     </script>";
             echo "Error: " . $conn->error;
         }
@@ -107,23 +112,23 @@ if (!(isset($_SESSION['role']))) {
         </div>
         <div class="input-box" id="input-nik">
             <label for="nik">NIK</label>
-            <input type="number" name="nik" id="nik" class="textfield" value="<?= $surat['nik'] ?>" placeholder="Masukan NIK">
+            <input type="number" name="nik" id="nik" class="textfield" value="<?= $surat['nik'] ?>" placeholder="Masukan NIK" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-nokk">
             <label for="nokk">No KK</label>
-            <input type="number" name="nokk" id="nokk" class="textfield" value="<?= $surat['no_kk'] ?>" placeholder="Masukan No. KK">
+            <input type="number" name="nokk" id="nokk" class="textfield" value="<?= $surat['no_kk'] ?>" placeholder="Masukan No. KK" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-nama">
             <label for="nama">Nama Lengkap</label>
-            <input type="text" name="nama" id="nama" class="textfield" value="<?= $surat['nama'] ?>" placeholder="Masukan Nama Lengkap">
+            <input type="text" name="nama" id="nama" class="textfield" value="<?= $surat['nama'] ?>" placeholder="Masukan Nama Lengkap" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-tl">
             <label for="tl">Tanggal Lahir</label>
-            <input type="date" name="tl" id="tl" class="textfield" value="<?= $surat['tgl_lahir'] ?>" placeholder="Masukan Tanggal Lahir">
+            <input type="date" name="tl" id="tl" class="textfield" value="<?= $surat['tgl_lahir'] ?>" placeholder="Masukan Tanggal Lahir" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-jk">
             <label for="jk">Jenis Kelamin</label>
-            <select name="jk" id="jk">
+            <select name="jk" id="jk" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
                 <option value="<?= $surat['jenis_kelamin'] ?>" selected><?= $surat['jenis_kelamin'] ?></option>
                 <option value="Laki-Laki">Laki-Laki</option>
                 <option value="Perempuan">Perempuan</option>
@@ -131,7 +136,7 @@ if (!(isset($_SESSION['role']))) {
         </div>
         <div class="input-box" id="input-agama">
             <label for="agama">Agama</label>
-            <select name="agama" id="agama">
+            <select name="agama" id="agama" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
                 <option value="<?= $surat['agama'] ?>" selected><?= $surat['agama'] ?></option>
                 <option value="Islam">Islam</option>
                 <option value="Kristen">Kristen</option>
@@ -143,29 +148,33 @@ if (!(isset($_SESSION['role']))) {
         </div>
         <div class="input-box" id="input-alamat">
             <label for="alamat">Alamat</label>
-            <input type="text" name="alamat" id="alamat" class="textfield" value="<?= $surat['alamat'] ?>" placeholder="Masukan Alamat">
+            <input type="text" name="alamat" id="alamat" class="textfield" value="<?= $surat['alamat'] ?>" placeholder="Masukan Alamat" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-wn">
             <label for="wn">Kewarganegaraan</label>
-            <input type="text" name="wn" id="wn" class="textfield" value="<?= $surat['kewarganagaraan'] ?>" placeholder="Masukan Kewarganegaraan">
+            <input type="text" name="wn" id="wn" class="textfield" value="<?= $surat['kewarganagaraan'] ?>" placeholder="Masukan Kewarganegaraan" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-fkk">
             <label for="fkk">Upload File KK</label>
-            <input type="file" name="fkk" id="fkk" class="filefield" value="<?= $surat['file_kk'] ?>" placeholder="Upload File KK">
+            <input type="file" name="fkk" id="fkk" class="filefield" value="<?= $surat['file_kk'] ?>" placeholder="Upload File KK" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="input-box" id="input-fktp">
             <label for="fktp">Upload File KTP</label>
-            <input type="file" name="fktp" id="fktp" class="filefield" value="<?= $surat['file_ktp'] ?>" placeholder="Upload File KTP">
+            <input type="file" name="fktp" id="fktp" class="filefield" value="<?= $surat['file_ktp'] ?>" placeholder="Upload File KTP" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
         <div class="btn-op">
             <?php if ($_SESSION['role'] == "admin") { ?>
                 <a class="button" href="/e-suratv2/views/dashboard.php">Kembali</a>
-                <input class="button" type="submit" value="Terima" name="accform">
-                <input class="button" type="submit" value="Tolak" name="rejform">
+                <?php if ($surat['status'] == 'Proses') { ?>
+                    <input class="button" type="submit" value="Terima" name="accform">
+                    <input class="button" type="submit" value="Tolak" name="rejform">
+                <?php } ?>
             <?php } elseif ($_SESSION['role'] == "user") { ?>
                 <a class="button" href="hist.php">Kembali</a>
-                <input class="button" type="submit" value="Ubah" name="updateform">
-                <a class="button" href="cancelform.php?surat_id=<?= $surat_id ?>">Batalkan</a>
+                <?php if ($surat['status'] == 'Proses') { ?>
+                    <input class="button" type="submit" value="Ubah" name="updateform">
+                    <a class="button" href="cancelform.php?surat_id=<?= $surat_id ?>">Batalkan</a>
+                <?php } ?>
             <?php } ?>
         </div>
     </form>

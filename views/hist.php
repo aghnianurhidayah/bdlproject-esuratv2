@@ -66,10 +66,10 @@ if (!(isset($_SESSION['role']))) {
                                             <a href="../views/detail_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
 
                                         <?php
-                                        } else if ($srt['status'] == "Setuju") {
+                                        } else if ($srt['status'] == "Diterima") {
                                         ?>
 
-                                            <a href="../surat/<?= $srt['nama_surat'] ?>.php?surat_id=<?= $form['surat_id'] ?>" target="_blank"><button>Unduh</button></a>
+                                            <a href="../surat/<?= $srt['nama_surat'] ?>.php?surat_id=<?= $srt['surat_id'] ?>" target="_blank">Unduh</a>
 
                                         <?php
                                         }

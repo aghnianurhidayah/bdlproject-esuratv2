@@ -10,7 +10,7 @@ if (!(isset($_SESSION['role']))) {
 
         if (isset($_POST['cari'])) {
             $keyword = $_POST['cari'];
-            $sql_surat = mysqli_query($conn, "SELECT * FROM surat WHERE surat_id LIKE '%$keyword%'");
+            $sql_surat = mysqli_query($conn, "SELECT * FROM surat WHERE nik_user LIKE '%$keyword%'");
         } else {
             $sql_surat = mysqli_query($conn, "SELECT * FROM surat");
         }
@@ -76,8 +76,22 @@ if (!(isset($_SESSION['role']))) {
                                         <td><?= $srt['nama_surat'] ?></td>
                                         <td><?= $srt['status'] ?></td>
                                         <td>
-                                            <a href="../views/preview_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
-                                        </td>
+                                        <?php
+                                        if ($srt['status'] == "Proses") {
+                                        ?>
+
+                                            <a href="../views/detail_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
+
+                                        <?php
+                                        } else if ($srt['status'] == "Diterima") {
+                                        ?>
+
+                                            <a href="../surat/<?= $srt['nama_surat'] ?>.php?surat_id=<?= $srt['surat_id'] ?>" target="_blank">Unduh</a>
+
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
                                     </tr>
                                 <?php $i++;
                                 endforeach; ?>
