@@ -143,6 +143,9 @@ if (!(isset($_SESSION['role']))) {
             <label for="pekerjaan">Pekerjaan</label>
             <input type="text" name="pekerjaan" id="pekerjaan" class="textfield" value="<?= $surat['pekerjaan'] ?>" placeholder="Masukan Pekerjaan" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
+        <div class="input-box">
+            <img src="/e-suratv2/img/ktp/<?= $surat['file_ktp'] ?>" alt="" width="50%">
+        </div>
         <div class="input-box d-none" id="input-fktp">
             <label for="fktp">Upload File KTP</label>
             <input type="file" name="fktp" id="fktp" class="filefield" value="<?= $surat['file_ktp'] ?>" placeholder="Upload File KTP" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>

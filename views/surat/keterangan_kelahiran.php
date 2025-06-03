@@ -40,7 +40,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
             $tgl_masuk = date('Y-m-d');
 
             if (is_uploaded_file($tmp_kk) && file_exists($tmp_kk)) {
-                move_uploaded_file($tmp_kk, "../img/kk/" . $file_kk);
+                move_uploaded_file($tmp_kk, "../../img/kk/" . $file_kk);
             } else {
                 $file_kk = '';
             }

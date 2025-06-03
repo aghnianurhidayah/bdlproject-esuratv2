@@ -153,9 +153,15 @@ if (!(isset($_SESSION['role']))) {
             <label for="tl">Tanggal Kematian</label>
             <input type="date" name="tk" id="tk" class="textfield" value="<?= $surat['tgl_meninggal'] ?>" placeholder="Masukan Tanggal Kematian" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
+        <div class="input-box">
+            <img src="/e-suratv2/img/kk/<?= $surat['file_kk'] ?>" alt="" width="50%">
+        </div>
         <div class="input-box d-none" id="input-fkk">
             <label for="fkk">Upload File KK</label>
             <input type="file" name="fkk" id="fkk" class="filefield" placeholder="Upload File KK" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
+        </div>
+        <div class="input-box">
+            <img src="/e-suratv2/img/ktp/<?= $surat['file_ktp'] ?>" alt="" width="50%">
         </div>
         <div class="input-box d-none" id="input-fktp">
             <label for="fktp">Upload File KTP</label>

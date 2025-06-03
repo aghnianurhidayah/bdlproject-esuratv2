@@ -80,7 +80,7 @@ if (!(isset($_SESSION['role']))) {
                                         if ($srt['status'] == "Proses") {
                                         ?>
 
-                                            <a href="../views/detail_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
+                                            <a href="../views/preview_surat.php?surat_id=<?= $srt['surat_id'] ?>">Lihat</a>
 
                                         <?php
                                         } else if ($srt['status'] == "Diterima") {

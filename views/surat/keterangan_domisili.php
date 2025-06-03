@@ -42,13 +42,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
             $tgl_masuk = date('Y-m-d');
 
             if (is_uploaded_file($tmp_kk) && file_exists($tmp_kk)) {
-                move_uploaded_file($tmp_kk, "../img/kk/" . $file_kk);
+                move_uploaded_file($tmp_kk, "../../img/kk/" . $file_kk);
             } else {
                 $file_kk = '';
             }
 
             if (is_uploaded_file($tmp_ktp) && file_exists($tmp_ktp)) {
-                move_uploaded_file($tmp_ktp, "../img/ktp/" . $file_ktp);
+                move_uploaded_file($tmp_ktp, "../../img/ktp/" . $file_ktp);
             } else {
                 $file_ktp = '';
             }

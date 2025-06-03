@@ -149,6 +149,9 @@ if (!(isset($_SESSION['role']))) {
             <label for="ibu">Nama Ibu Kandung</label>
             <input type="text" name="ibu" id="ibu" class="textfield" value="<?= $surat['nama_ibu'] ?>" placeholder="Masukan Nama Ibu" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>
         </div>
+        <div class="input-box">
+            <img src="/e-suratv2/img/kk/<?= $surat['file_kk'] ?>" alt="" width="50%">
+        </div>
         <div class="input-box d-none" id="input-fkk">
             <label for="fkk">Upload File KK</label>
             <input type="file" name="fkk" id="fkk" class="filefield" placeholder="Upload File KK" <?= ($_SESSION['role'] == 'admin' ? 'disabled' : '') ?>>

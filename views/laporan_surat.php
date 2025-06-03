@@ -125,8 +125,8 @@ if (!(isset($_SESSION['role']))) {
                         <select name="status" id="status" class="form-control">
                             <option value="">Status</option>
                             <option value="Proses">Proses</option>
-                            <option value="Terima">Terima</option>
-                            <option value="Tolak">Tolak</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
                             <option value="Batal">Batal</option>
                         </select>
                     </div>
@@ -134,7 +134,7 @@ if (!(isset($_SESSION['role']))) {
             </div>
 
             <div class="export" style="margin-top: 20px;">
-                <a id="btnEksport" href="../laporan/export_laporan.php" target="_blank" class="btn-export">Export PDF</a>
+                <a id="btnEksport" href="../laporan/export_laporan.php" class="btn-export" target="_blank" >Export PDF</a>
             </div>
 
             <!-- Tabel Data -->
